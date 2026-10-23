@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8fc">
+  <meta name="description" content="Сторінку не знайдено — творчий простір Олександри Шерепери.">
+  <title>Сторінку не знайдено — Олександра Шерепера</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: light; --paper:#fff8fc; --pink:#f45ba5; --hot-pink:#e82e87; --blush:#ffd6e9; --ink:#241923; --muted:#756570; --line:#eedde7; --display:'Manrope','Arial',sans-serif; --body:'DM Sans','Arial',sans-serif; --page-gutter:clamp(1.25rem,6.2vw,6.75rem); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { min-height:100vh; margin:0; display:flex; flex-direction:column; color:var(--ink); background:var(--paper); font-family:var(--body); font-size:16px; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    a:focus-visible,button:focus-visible { outline:3px solid var(--hot-pink); outline-offset:4px; }
+    .site-header { height:84px; flex:none; padding-inline:var(--page-gutter); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(238,221,231,.7); position:relative; z-index:10; background:rgba(255,248,252,.92); backdrop-filter:blur(14px); }
+    .wordmark { display:flex; align-items:center; gap:0; text-decoration:none; font:700 12px/1.15 var(--display); letter-spacing:-.02em; }
+    .main-nav { display:flex; gap:clamp(17px,2.6vw,38px); margin-left:auto; margin-right:clamp(28px,5vw,72px); }
+    .main-nav a { text-decoration:none; color:var(--muted); font-size:13px; transition:color .2s ease; }
+    .main-nav a:hover { color:var(--hot-pink); }
+    .language-switch { display:flex; gap:7px; align-items:center; color:#c8b9c2; font-size:12px; }
+    .language-switch button { padding:7px 1px; border:0; background:transparent; color:#a2939c; cursor:pointer; font:inherit; }
+    .language-switch button.active { color:var(--hot-pink); font-weight:700; }
+    .menu-toggle { display:none; }
+    main { flex:1; width:min(1320px,100%); margin:auto; padding:clamp(46px,7vw,90px) var(--page-gutter); display:grid; grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr); align-items:center; gap:clamp(34px,7vw,96px); }
+    .error-copy { position:relative; z-index:1; }
+    .eyebrow { color:var(--muted); font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+    h1 { margin:22px 0 18px; color:var(--hot-pink); font:800 clamp(5.5rem,12vw,10rem)/.88 var(--display); letter-spacing:-.09em; }
+    .message { max-width:470px; margin:0; color:var(--muted); font-size:16px; line-height:1.7; }
+    .home { margin-top:26px; display:inline-flex; align-items:center; gap:14px; text-decoration:none; font-size:14px; font-weight:700; }
+    .arrow { width:40px; height:40px; display:grid; place-items:center; border-radius:50%; background:var(--hot-pink); color:white; font-size:18px; transition:transform .2s ease; }
+    .home:hover .arrow { transform:translate(3px,-3px); }
+    .art { width:min(100%,440px); justify-self:center; }
+    .art img { display:block; width:100%; height:auto; filter:drop-shadow(0 15px 18px rgba(65,40,49,.1)); }
+    .site-footer { min-height:88px; flex:none; padding:18px var(--page-gutter); display:flex; align-items:center; justify-content:center; gap:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; text-align:center; }
+    @media(max-width:700px) {
+      .site-header { height:70px; }
+      .menu-toggle { width:36px; height:36px; margin-left:auto; margin-right:17px; padding:10px 7px; display:flex; flex-direction:column; justify-content:center; gap:5px; border:0; background:transparent; cursor:pointer; }
+      .menu-toggle span { display:block; width:20px; height:1.5px; background:var(--ink); transition:transform .2s ease; }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(3.25px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform:translateY(-3.25px) rotate(-45deg); }
+      .main-nav { position:absolute; top:69px; inset-inline:0; margin:0; padding:14px var(--page-gutter) 23px; display:flex; flex-direction:column; gap:0; background:var(--paper); border-bottom:1px solid var(--line); box-shadow:0 14px 20px rgba(36,25,35,.06); opacity:0; visibility:hidden; transform:translateY(-7px); transition:opacity .2s ease,transform .2s ease,visibility .2s; }
+      .main-nav.is-open { opacity:1; visibility:visible; transform:translateY(0); }
+      .main-nav a { padding:12px 0; font-size:14px; }
+      .language-switch { margin-left:0; }
+      main { grid-template-columns:1fr; gap:12px; padding-top:38px; padding-bottom:52px; text-align:center; }
+      .art { grid-row:1; width:min(76vw,290px); }
+      .error-copy { grid-row:2; }
+      .message { margin-inline:auto; }
+      .eyebrow { font-size:11px; }
+      h1 { margin:16px 0; font-size:clamp(5rem,20vw,8rem); }
+      .site-footer { min-height:88px; padding-top:20px; padding-bottom:20px; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="Oleksandra Sherepera — home"><span>Oleksandra<br>Sherepera</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Відкрити меню"><span></span><span></span></button>
+    <nav id="main-nav" class="main-nav" aria-label="Основна навігація">
+      <a href="/#about" data-copy="about">Про мене</a><a href="/#world" data-copy="world">Мій світ</a><a href="/#work" data-copy="work">Експерименти</a><a href="/#contact" data-copy="contact">Контакт</a>
+    </nav>
+    <div class="language-switch" role="group" aria-label="Language"><button type="button" class="active" aria-pressed="true" data-lang="uk">UA</button><span aria-hidden="true">/</span><button type="button" aria-pressed="false" data-lang="en">EN</button></div>
+  </header>
+  <main id="top">
+    <div class="error-copy">
+      <div class="eyebrow" data-copy="eyebrow">404 / ТРОХИ НЕ ТУДИ</div>
+      <h1>Ой<span>!</span></h1>
+      <p class="message" data-copy="message">Здається, ця сторінка загубилася десь між ідеями. Повернімося на початок?</p>
+      <a class="home" href="/" data-copy-link><span data-copy="home">На головну</span><span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+    <div class="art" aria-hidden="true"><img src="images/404-chibi-crying.png" alt=""></div>
+  </main>
+  <footer class="site-footer"><span>Oleksandra Sherepera © <span id="year"></span></span></footer>
+  <script>
+    const messages = {
+      uk: { title:'Сторінку не знайдено — Олександра Шерепера', eyebrow:'404 / ТРОХИ НЕ ТУДИ', message:'Здається, ця сторінка загубилася десь між ідеями. Повернімося на початок?', home:'На головну', about:'Про мене', world:'Мій світ', work:'Експерименти', contact:'Контакт', menuOpen:'Закрити меню', menuClose:'Відкрити меню' },
+      en: { title:'Page not found — Oleksandra Sherepera', eyebrow:'404 / A LITTLE OFF TRACK', message:'Looks like this page got lost somewhere between ideas. Shall we head back to the beginning?', home:'Back to home', about:'About', world:'My world', work:'Experiments', contact:'Contact', menuOpen:'Close menu', menuClose:'Open menu' }
+    };
+    let language='uk';
+    try { language=localStorage.getItem('oleksandra-portfolio-language')==='en'?'en':'uk'; } catch { /* Storage is optional. */ }
+    function setLanguage(next) {
+      language=next; document.documentElement.lang=language; document.title=messages[language].title;
+      document.querySelectorAll('[data-copy]').forEach(el=>{const key=el.dataset.copy;if(messages[language][key])el.textContent=messages[language][key]});
+      document.querySelectorAll('[data-lang]').forEach(button=>{const active=button.dataset.lang===language;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});
+      menuButton.setAttribute('aria-label',menuButton.getAttribute('aria-expanded')==='true'?messages[language].menuOpen:messages[language].menuClose);
+      nav.setAttribute('aria-label',language==='uk'?'Основна навігація':'Main navigation');
+      try { localStorage.setItem('oleksandra-portfolio-language',language); } catch { /* The page works without storage. */ }
+    }
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));
+    const menuButton=document.querySelector('.menu-toggle'),nav=document.querySelector('.main-nav');
+    menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?messages[language].menuOpen:messages[language].menuClose);nav.classList.toggle('is-open',open)});
+    nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label',messages[language].menuClose);nav.classList.remove('is-open')}));
+    setLanguage(language);
+  </script>
+</body>
+</html>

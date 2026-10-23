@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8fc">
+  <meta name="description" content="Особистий творчий простір Олександри Шерепери: відео, візуальні експерименти, технології та цікавість до нового.">
+  <meta property="og:title" content="Олександра Шерепера — Video Editor & Visual Creator">
+  <meta property="og:description" content="Творчість із цікавістю до всього нового.">
+  <title>Олександра Шерепера — Video Editor & Visual Creator</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root {
+  color-scheme: light;
+  --paper: #fff8fc;
+  --white: #ffffff;
+  --pink: #f45ba5;
+  --hot-pink: #e82e87;
+  --blush: #ffd6e9;
+  --ink: #241923;
+  --muted: #756570;
+  --line: #eedde7;
+  --display: 'Manrope', 'Arial', sans-serif;
+  --body: 'DM Sans', 'Arial', sans-serif;
+  --page-gutter: clamp(1.25rem, 6.2vw, 6.75rem);
+  --radius: 1.35rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 3px; pointer-events: none; background: var(--hot-pink); transform: scaleX(var(--scroll-progress, 0)); transform-origin: left center; }
+button, a { font: inherit; }
+a { color: inherit; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--hot-pink); outline-offset: 4px; }
+::selection { background: var(--pink); color: var(--white); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+:host { display: block; }
+.site-shell { overflow: hidden; }
+.section-wrap { padding-inline: var(--page-gutter); }
+.site-header { height: 84px; padding-inline: var(--page-gutter); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(238, 221, 231, .7); position: relative; z-index: 10; background: rgba(255, 248, 252, .92); backdrop-filter: blur(14px); }
+.wordmark { display: flex; align-items: center; gap: 0; text-decoration: none; font: 700 12px/1.15 var(--display); letter-spacing: -.02em; }
+.main-nav { display: flex; gap: clamp(17px, 2.6vw, 38px); margin-left: auto; margin-right: clamp(28px, 5vw, 72px); }
+.main-nav a { text-decoration: none; color: var(--muted); font-size: 13px; transition: color .2s ease; }
+.main-nav a:hover { color: var(--hot-pink); }
+.language-switch { display: flex; gap: 7px; align-items: center; color: #c8b9c2; font-size: 12px; }
+.language-switch button { padding: 7px 1px; border: 0; background: transparent; color: #a2939c; cursor: pointer; font-size: 12px; }
+.language-switch button.active { color: var(--hot-pink); font-weight: 700; }
+.menu-toggle { display: none; }
+
+.hero { min-height: max(650px, calc(100svh - 84px)); padding: clamp(38px, 5vw, 68px) var(--page-gutter) 58px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.hero-copy { position: relative; z-index: 2; width: 100%; max-width: 1120px; animation: rise-in .8s both; }
+.hero h1 { margin: 0; font: 800 clamp(3.2rem, 7vw, 6.8rem)/.96 var(--display); letter-spacing: -.085em; white-space: pre-line; max-width: none; }
+.hero-meta { margin-top: 22px; display: flex; flex-direction: column; justify-content: center; gap: 8px; align-items: center; }
+.hero-role { font-size: 14px; letter-spacing: .02em; font-weight: 700; }
+.hero-intro { max-width: 440px; font-size: 14px; line-height: 1.6; color: var(--muted); }
+.hero-art { width: min(100%, 350px); margin: 10px auto 0; position: relative; isolation: isolate; animation: art-in 1.1s .14s both; }
+.hero-art::before { content: ""; position: absolute; z-index: -1; width: 126%; height: 43%; left: 50%; top: 52%; transform: translate(-50%, -50%); border-radius: 999px; background: linear-gradient(115deg, #f8bfd5, #f48cb6); }
+.hero-art img { display: block; width: 100%; height: auto; filter: drop-shadow(0 15px 18px rgba(65,40,49,.13)); transform: translate3d(var(--look-x, 0px), var(--look-y, 0px), 0) rotate(var(--look-rotate, 0deg)); transition: transform .42s cubic-bezier(.2,.72,.25,1); will-change: transform; }
+
+.about { padding-top: 88px; padding-bottom: 100px; background-color: var(--white); background-image: linear-gradient(rgba(232,46,135,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(232,46,135,.055) 1px, transparent 1px); background-size: 28px 28px; }
+.about-layout { margin-top: 42px; display: grid; grid-template-columns: 1.1fr .82fr .55fr; gap: clamp(30px, 5vw, 78px); align-items: center; }
+.display-heading { margin: 0; font: 800 clamp(3.2rem, 6vw, 6.2rem)/.98 var(--display); letter-spacing: -.08em; white-space: pre-line; }
+.about-copy { max-width: 430px; }
+.lead { font-size: clamp(17px, 1.55vw, 21px); line-height: 1.52; font-weight: 600; letter-spacing: -.03em; }
+.about-copy p:not(.lead) { font-size: 13px; line-height: 1.8; color: var(--muted); }
+.handwritten { margin-top: 30px; color: var(--hot-pink); font: 600 15px var(--display); transform: rotate(-4deg); width: max-content; }
+.handwritten span { margin-left: 10px; font-size: 21px; }
+.about-note { align-self: end; position: relative; padding: 30px 23px 22px; background-color: #fff1f7; background-image: linear-gradient(rgba(232,46,135,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(232,46,135,.09) 1px, transparent 1px); background-size: 18px 18px; border: 1px solid #f4d9e6; border-radius: 12px 12px 24px 12px; min-height: 220px; display: flex; flex-direction: column; justify-content: center; transform: rotate(2deg); box-shadow: 0 12px 26px rgba(111,48,79,.07); }
+.note-star { position: absolute; top: 17px; right: 20px; color: var(--hot-pink); font-size: 23px; }
+.about-note p { font: 600 14px/1.55 var(--display); letter-spacing: -.03em; }
+.note-scribble { color: var(--hot-pink); align-self: end; font: italic 13px var(--display); }
+
+.world { padding-top: 95px; padding-bottom: 100px; background: var(--paper); }
+.world-heading-row { display: flex; align-items: end; justify-content: space-between; margin: 36px 0 40px; gap: 30px; }
+.world-heading-row .display-heading span { color: var(--hot-pink); }
+.world-lead { max-width: 270px; margin: 0 4vw 9px 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.interest-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 13px; }
+.interest { border-radius: var(--radius); padding: 22px 23px 24px; min-height: 174px; position: relative; overflow: hidden; transition: transform .3s ease, box-shadow .3s ease; }
+.interest:hover { transform: translateY(-5px) rotate(-.5deg); box-shadow: 0 15px 36px rgba(111,48,79,.1); }
+.interest:nth-child(1), .interest:nth-child(2), .interest:nth-child(3), .interest:nth-child(4) { grid-column: span 3; }
+.interest:nth-child(5) { grid-column: span 4; min-height: 190px; }
+.interest:nth-child(6), .interest:nth-child(7) { grid-column: span 4; min-height: 190px; }
+.interest-index { position: absolute; top: 20px; right: 21px; font-size: 9px; color: rgba(36,25,35,.5); }
+.interest-icon { display: block; font: 500 31px/1 var(--display); margin-bottom: 22px; }
+.interest-icon svg { display: block; width: 32px; height: 32px; fill: currentColor; }
+.interest h3 { margin: 0 0 7px; font: 700 15px var(--display); letter-spacing: -.04em; }
+.interest p { margin: 0; max-width: 220px; font-size: 11px; line-height: 1.55; color: rgba(36,25,35,.65); }
+.water { background: #f9c5df; }.water .interest-icon { color: #b82b72; }
+.skate { background: #edb6d0; }.skate .interest-icon { color: #783653; }
+.music { background: #f4dbe8; }.music .interest-icon { color: #bd4381; }
+.massage { background: #f7e7ef; }.massage .interest-icon { color: #9b697f; }
+.tech { background: #2a202a; color: #fff8fc; }.tech .interest-index,.tech p { color: rgba(255,248,252,.67); }.tech .interest-icon { color: #ff83bc; }
+.film { background: #ffe8f2; }.film .interest-icon { color: var(--hot-pink); }
+.travel { background: #f8d4e5; }.travel .interest-icon { color: #a83a70; }
+
+.work { padding-top: 96px; padding-bottom: 72px; background-color: var(--white); background-image: linear-gradient(rgba(232,46,135,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(232,46,135,.055) 1px, transparent 1px); background-size: 28px 28px; }
+.work-heading-row { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin: 36px 0 38px; }
+.work-heading-row > p { max-width: 340px; margin: 0 2vw 8px 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.pink-dot { color: var(--hot-pink); }
+.work .pink-dot { color: var(--ink); }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.project-card { min-width: 0; }
+.project-visual { position: relative; height: clamp(220px, 25vw, 335px); overflow: hidden; border-radius: 12px; transition: border-radius .35s ease; }
+.project-card:hover .project-visual { border-radius: 45% 45% 12px 12px / 18% 18% 12px 12px; }
+.project-number { position: absolute; z-index: 2; top: 17px; left: 18px; font-size: 9px; letter-spacing: .1em; color: rgba(36,25,35,.65); }
+.project-soft .project-visual { background: #f9d6e7; }
+.soft-interface { position: absolute; inset: 16% 16%; border-radius: 18px; background: rgba(255,255,255,.75); box-shadow: 0 18px 50px rgba(141,72,106,.1); display: flex; flex-direction: column; align-items: center; justify-content: space-around; color: #7c6270; font-size: 11px; }
+.soft-interface i { font-style: normal; font-size: 8px; letter-spacing: .12em; }
+.mood-orb { width: 83px; height: 83px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe4f0, #f45ba5 70%); box-shadow: 12px 9px 0 #fbd1e4; animation: float 4s ease-in-out infinite; }
+.visual-caption { position: absolute; bottom: 13px; right: 17px; font-size: 7px; letter-spacing: .17em; color: #9d7789; }
+.project-rhythm .project-visual { background: #29212b; }
+.project-rhythm .project-number { color: rgba(255,255,255,.55); }
+.rhythm-bars { position: absolute; inset: 22% 13% 35%; display: flex; align-items: center; justify-content: space-between; gap: 7px; }
+.rhythm-bars i { width: 7%; height: 20%; background: #f45ba5; border-radius: 30px; animation: beat 2.4s ease-in-out infinite alternate; }
+.rhythm-bars i:nth-child(2n) { height: 77%; background: #ffd6e9; animation-delay: -.5s; }.rhythm-bars i:nth-child(3n) { height: 42%; animation-delay: -1s; }.rhythm-bars i:nth-child(5n) { height: 95%; animation-delay: -.8s; }
+.rhythm-word { position: absolute; bottom: 19%; left: 13%; color: white; font: 700 clamp(26px, 3vw, 42px) var(--display); letter-spacing: -.08em; }
+.rhythm-word span { color: var(--pink); }
+.project-room .project-visual { background-color: #f7e7ef; background-image: linear-gradient(rgba(232,46,135,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(232,46,135,.10) 1px, transparent 1px); background-size: 20px 20px; }
+.room-window { position: absolute; width: 56%; height: 69%; left: 14%; top: 15%; border-radius: 9px; background: #fffafd; box-shadow: 13px 13px 0 #edb6d0; overflow: hidden; }
+.window-dots { position: absolute; top: 10px; left: 12px; font-size: 7px; color: var(--pink); }
+.room-line { position: absolute; width: 42%; height: 2px; left: 15%; top: 33%; background: #ead5df; box-shadow: 0 8px #ead5df, 0 16px #ead5df; }
+.room-blob { position: absolute; right: 11%; bottom: 16%; width: 75px; height: 75px; background: var(--pink); border-radius: 65% 35% 58% 42% / 49% 59% 41% 51%; transform: rotate(-27deg); }
+.room-label { position: absolute; left: 15%; bottom: 17%; font: 800 18px/.95 var(--display); letter-spacing: -.07em; }
+.room-orbit { position: absolute; right: 10%; top: 24%; width: 72px; height: 72px; border: 1px solid var(--hot-pink); border-radius: 50%; display: grid; place-items: center; text-align: center; color: var(--hot-pink); font: 700 8px/1.4 var(--display); transform: rotate(12deg); }
+.project-info { padding: 22px 4px 0; }
+.project-category { color: var(--hot-pink); font-size: 8px; font-weight: 700; letter-spacing: .13em; }
+.project-info h3 { margin: 10px 0 9px; font: 700 23px var(--display); letter-spacing: -.06em; }
+.project-info p { margin: 0; max-width: 350px; color: var(--muted); font-size: 11px; line-height: 1.7; min-height: 57px; }
+
+
+.contact { min-height: clamp(600px, calc(100svh - 84px), 760px); padding-top: 70px; padding-bottom: 70px; position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); align-items: center; gap: clamp(24px, 5vw, 72px); overflow: hidden; background-color: var(--paper); background-image: linear-gradient(rgba(232,46,135,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(232,46,135,.055) 1px, transparent 1px); background-size: 28px 28px; }
+.contact-copy { position: relative; z-index: 2; }
+.contact .display-heading { margin: 0; font-size: clamp(3.1rem, 6.1vw, 6.2rem); line-height: .98; }
+.contact .display-heading span { color: var(--hot-pink); }
+.social-links { display: flex; justify-content: flex-start; gap: 13px; margin-top: 28px; }
+.social-link { width: 46px; height: 46px; display: grid; place-items: center; border: 0; border-radius: 50%; color: white; background: var(--hot-pink); font: 700 14px var(--display); text-decoration: none; box-shadow: 0 5px 12px rgba(232,46,135,.17); transition: background .2s ease, transform .2s ease; }
+.social-link:hover { color: white; background: #c92170; transform: translateY(-3px); }
+.social-link svg { display: block; width: 20px; height: 20px; fill: currentColor; }
+.social-link .freelancehunt-logo { width: 27px; height: 27px; }
+.contact .freelancehunt-logo path { fill: white; }
+.contact .freelancehunt-logo circle { fill: var(--hot-pink); }
+.contact-art { width: min(100%, 390px); justify-self: center; position: relative; isolation: isolate; }
+.contact-art img { display: block; width: 100%; height: auto; border-radius: 18px; filter: drop-shadow(0 12px 16px rgba(65,40,49,.12)); }
+.site-footer { min-height: 88px; display: flex; align-items: center; justify-content: center; gap: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; text-align: center; }
+
+.has-scroll-reveal .scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .72s ease var(--reveal-delay, 0ms), transform .72s cubic-bezier(.2,.72,.25,1) var(--reveal-delay, 0ms); }
+.has-scroll-reveal .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes art-in { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+@keyframes twinkle { 0%,100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.12) rotate(12deg); } }
+@keyframes beat { from { transform: scaleY(.6); } to { transform: scaleY(1); } }
+
+@media (min-width: 1500px) { .hero, .about, .world, .work, .contact { padding-left: max(var(--page-gutter), calc((100vw - 1320px)/2)); padding-right: max(var(--page-gutter), calc((100vw - 1320px)/2)); } }
+@media (max-width: 1000px) {
+  .hero { min-height: 650px; }
+  .hero h1 { font-size: clamp(3.4rem, 8vw, 6rem); }
+  .about-layout { grid-template-columns: 1fr 1fr; }
+  .about-note { grid-column: 2; max-width: 260px; justify-self: end; margin-top: -10px; }
+  .interest:nth-child(n) { grid-column: span 4; }
+  .interest:nth-child(7) { grid-column: span 4; }
+}
+@media (max-width: 700px) {
+  .site-header { height: 70px; }
+  .menu-toggle { width: 36px; height: 36px; margin-left: auto; margin-right: 17px; padding: 10px 7px; display: flex; flex-direction: column; justify-content: center; gap: 5px; border: 0; background: transparent; cursor: pointer; }
+  .menu-toggle span { display: block; width: 20px; height: 1.5px; background: var(--ink); transition: transform .2s ease; }
+  .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.25px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+  .main-nav { position: absolute; top: 69px; inset-inline: 0; margin: 0; padding: 14px var(--page-gutter) 23px; display: flex; flex-direction: column; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 14px 20px rgba(36,25,35,.06); opacity: 0; visibility: hidden; transform: translateY(-7px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+  .main-nav.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .main-nav a { padding: 12px 0; font-size: 14px; }
+  .language-switch { margin-left: 0; }
+  .hero { min-height: 0; padding: 54px var(--page-gutter) 55px; }
+  .hero h1 { font-size: clamp(2.4rem, 10.5vw, 4.5rem); line-height: .98; }
+  .hero-meta { margin-top: 22px; }
+  .hero-intro { max-width: 300px; line-height: 1.5; }
+  .hero-art { width: min(78vw, 320px); margin-top: 18px; }
+  .about, .world, .work, .contact { padding-top: 65px; padding-bottom: 70px; }
+  .about-layout { grid-template-columns: 1fr; gap: 26px; margin-top: 30px; }
+  .display-heading { font-size: clamp(3rem, 13vw, 5rem); }
+  .about-copy { max-width: none; }
+  .about-copy .lead { max-width: 440px; }
+  .about-note { grid-column: 1; justify-self: end; width: min(250px, 75%); min-height: 180px; margin-top: 4px; }
+  .world-heading-row, .work-heading-row { display: block; margin: 32px 0 26px; }
+  .world-lead, .work-heading-row > p { max-width: 330px; margin: 19px 0 0; }
+  .interest-grid { gap: 9px; }
+  .interest:nth-child(n) { grid-column: span 6; min-height: 164px; padding: 18px; }
+  .interest:nth-child(5) { grid-column: span 12; min-height: 155px; }
+  .interest:nth-child(6), .interest:nth-child(7) { grid-column: span 6; }
+  .interest-icon { margin-bottom: 17px; }
+  .interest p { font-size: 10px; }
+  .project-grid { grid-template-columns: 1fr; gap: 39px; }
+  .project-visual { height: min(75vw, 340px); }
+  .project-info p { min-height: 0; }
+  .contact { min-height: 0; grid-template-columns: minmax(0, 1fr); gap: 26px; padding-top: 65px; padding-bottom: 45px; text-align: center; justify-items: center; }
+  .contact-copy { grid-column: 1; grid-row: 1; }
+  .contact .display-heading { font-size: clamp(3rem, 12vw, 5rem); }
+  .contact .social-links { justify-content: center; margin-top: 23px; }
+  .contact-art { grid-column: 1; grid-row: 2; width: min(76vw, 270px); }
+  .site-footer { min-height: 88px; flex-direction: row; gap: 12px; padding-top: 20px; padding-bottom: 20px; }
+}
+@media (max-width: 370px) {
+  .hero h1 { font-size: 2.35rem; }
+  .interest:nth-child(n) { grid-column: span 12; min-height: 145px; }
+  .interest:nth-child(5) { min-height: 155px; }
+}
+
+</style>
+
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Oleksandra Sherepera — home"><span>Oleksandra<br>Sherepera</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Відкрити меню"><span></span><span></span></button>
+      <nav id="main-nav" class="main-nav" aria-label="Основна навігація">
+        <a href="#about" data-uk="Про мене" data-en="About">Про мене</a><a href="#world" data-uk="Мій світ" data-en="My world">Мій світ</a><a href="#work" data-uk="Експерименти" data-en="Experiments">Експерименти</a><a href="#contact" data-uk="Контакт" data-en="Contact">Контакт</a>
+      </nav>
+      <div class="language-switch" role="group" aria-label="Language"><button type="button" class="active" aria-pressed="true" data-lang="uk">UA</button><span aria-hidden="true">/</span><button type="button" aria-pressed="false" data-lang="en">EN</button></div>
+    </header>
+    <main id="top">
+      <section class="hero section-wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title" data-uk="Збираю цікавість\nу щось візуальне." data-en="Turning curiosity\ninto something visual.">Збираю цікавість<br>у щось візуальне.</h1>
+        </div>
+        <div class="hero-art">
+          <img src="images/hero-character-cutout.png" alt="Мальований портрет дівчини з довгим каштановим волоссям" decoding="async" fetchpriority="high">
+        </div>
+        <div class="hero-meta"><span class="hero-role">Video Editor &amp; Visual Creator</span><span class="hero-intro" data-uk="Трохи монтажу, трохи дизайну, багато «а що, якщо?»" data-en="A little editing, a little design, lots of “what if?”">Трохи монтажу, трохи дизайну, багато «а що, якщо?»</span></div>
+      </section>
+      <section id="about" class="about section-wrap" aria-labelledby="about-title"><div class="about-layout"><h2 id="about-title" class="display-heading" data-uk="Привіт, я\nОлександра." data-en="Hi, I’m\nOleksandra.">Привіт, я<br>Олександра.</h2><div class="about-copy"><p class="lead" data-uk="Мені подобається перетворювати цікавість на щось, що можна побачити, відчути або натиснути." data-en="I like turning curiosity into something you can see, feel, or click.">Мені подобається перетворювати цікавість на щось, що можна побачити, відчути або натиснути.</p><p data-uk="Зараз я досліджую відеомонтаж, візуальний дизайн, веб і можливості AI. Вчуся, пробую різні інструменти й залишаю місце для експериментів — бо часто саме з них починається щось цікаве." data-en="Right now, I’m exploring video editing, visual design, the web, and what AI can do. I’m learning, trying different tools, and leaving room for experiments — because that’s often where something interesting begins.">Зараз я досліджую відеомонтаж, візуальний дизайн, веб і можливості AI. Вчуся, пробую різні інструменти й залишаю місце для експериментів — бо часто саме з них починається щось цікаве.</p><div class="handwritten"><span data-uk="цікавість — теж інструмент" data-en="curiosity is a tool, too">цікавість — теж інструмент</span> <span>↗</span></div></div><aside class="about-note"><span class="note-star">✳</span><p data-uk="Не обов’язково знати весь маршрут. Достатньо хотіти подивитися, що за поворотом." data-en="You don’t need the whole route mapped out. Sometimes it’s enough to wonder what’s around the corner.">Не обов’язково знати весь маршрут. Достатньо хотіти подивитися, що за поворотом.</p><span class="note-scribble">— O.</span></aside></div></section>
+      <section id="world" class="world section-wrap" aria-labelledby="world-title"><div class="world-heading-row"><h2 id="world-title" class="display-heading"><span data-uk="Мій маленький\nвсесвіт" data-en="My little\nuniverse">Мій маленький<br>всесвіт</span><span>.</span></h2><p class="world-lead" data-uk="Інтереси, що час від часу стають джерелом нових ідей." data-en="Interests that sometimes turn into new ideas.">Інтереси, що час від часу стають джерелом нових ідей.</p></div><div id="interest-grid" class="interest-grid"></div></section>
+      <section id="work" class="work section-wrap" aria-labelledby="work-title"><div class="work-heading-row"><h2 id="work-title" class="display-heading"><span data-uk="Ідеї в русі" data-en="Ideas in motion">Ідеї в русі</span><span class="pink-dot">.</span></h2><p data-uk="Три творчі напрямки для візуальних експериментів." data-en="Three creative directions for visual experiments.">Три творчі напрямки для візуальних експериментів.</p></div><div id="project-grid" class="project-grid"></div></section>
+      <section id="contact" class="contact section-wrap" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <h2 id="contact-title" class="display-heading"><span data-uk="Є ідея?\nДавай поговоримо" data-en="Have an idea?\nLet’s talk">Є ідея?<br>Давай поговоримо</span><span>.</span></h2>
+          <div class="social-links" aria-label="Соціальні мережі"><a class="social-link" href="https://freelancehunt.com/freelancer/alexaiend.html" target="_blank" rel="noopener noreferrer" aria-label="Freelancehunt"><svg class="freelancehunt-logo" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4a20 20 0 0 0 0 40v-9a11 11 0 0 1 0-22V4Z"/><path d="M24 4a20 20 0 0 1 0 40v-9a11 11 0 0 0 0-22V4Z"/><circle cx="24" cy="24" r="5"/></svg></a><a class="social-link" href="https://t.me/Oleksandra_Sherepera" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 3.6 18.5 20c-.2 1.2-.9 1.5-1.9.9l-5.2-3.9-2.5 2.4c-.3.3-.5.5-1 .5l.4-5.3 9.7-8.8c.4-.4-.1-.6-.6-.2L5.4 13.2.3 11.6c-1.1-.4-1.1-1.1.2-1.6L20.4 2.4c.9-.3 1.7.2 1.4 1.2Z"/></svg></a></div>
+        </div>
+        <div class="contact-art" aria-hidden="true"><img src="images/contact-chibi-cutout.png" alt=""></div>
+      </section>
+    </main>
+    <footer class="site-footer section-wrap"><span>Oleksandra Sherepera © <span id="year"></span></span></footer>
+  </div>
+  <script>
+const content = {
+  uk: {
+    interests: [
+      ['〰', 'Водний спорт', 'Вода, рух і трохи бризок у планах.', 'water'],
+      ['<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 7h12v12c0 4 2 6 6 8l9 4v6H8v-5l7-4 4-12-6-2V7Z"/><path d="M9 32h31" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="41" r="3" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="25" cy="41" r="3" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="35" cy="41" r="3" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>', 'Ролики', 'Тримати баланс. Іноді буквально.', 'skate'],
+      ['♫', 'Музика', 'Саундтрек до думок і буденних справ.', 'music'],
+      ['✳', 'Масаж', 'Пауза, щоб знову відчути тіло.', 'massage'],
+      ['⌘', 'Технології & AI', 'Інструменти, з якими хочеться гратися.', 'tech'],
+      ['▣', 'Кіно й серіали', 'Історії, кадри, настрій.', 'film'],
+      ['✈', 'Подорожі', 'Нові місця змінюють кут зору.', 'travel']
+    ],
+    projects: [
+      ['01', 'AI × DIGITAL OBJECT', 'М’яка система', 'Концепція цифрового простору, де інтерфейс підлаштовується під настрій, а не навпаки.', 'soft'],
+      ['02', 'MOTION STUDY', 'Ритм / пауза', 'Візуальний етюд про те, як темп і тиша змінюють сприйняття кадру.', 'rhythm'],
+      ['03', 'WEB EXPERIMENT', 'Кімната ідей', 'Вебпростір для вільних думок, свіжих ідей та творчих знахідок.', 'room']
+    ],
+    menuOpen: 'Закрити меню', menuClose: 'Відкрити меню', title: 'Олександра Шерепера — Video Editor & Visual Creator'
+  },
+  en: {
+    interests: [
+      ['〰', 'Water sports', 'Water, movement, and a few splashes.', 'water'],
+      ['<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 7h12v12c0 4 2 6 6 8l9 4v6H8v-5l7-4 4-12-6-2V7Z"/><path d="M9 32h31" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="41" r="3" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="25" cy="41" r="3" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="35" cy="41" r="3" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>', 'Roller skating', 'Finding balance. Sometimes literally.', 'skate'],
+      ['♫', 'Music', 'A soundtrack for thoughts and everyday things.', 'music'],
+      ['✳', 'Massage', 'A pause to reconnect with the body.', 'massage'],
+      ['⌘', 'Tech & AI', 'Tools that make me want to play.', 'tech'],
+      ['▣', 'Films & series', 'Stories, frames, atmosphere.', 'film'],
+      ['✈', 'Travel', 'New places shift your point of view.', 'travel']
+    ],
+    projects: [
+      ['01', 'AI × DIGITAL OBJECT', 'Soft system', 'A digital-space concept where the interface adapts to your mood, not the other way around.', 'soft'],
+      ['02', 'MOTION STUDY', 'Rhythm / pause', 'A visual study of how pace and silence can shift the feeling of a frame.', 'rhythm'],
+      ['03', 'WEB EXPERIMENT', 'Idea room', 'A web space for free-flowing thoughts, fresh ideas, and creative discoveries.', 'room']
+    ],
+    menuOpen: 'Close navigation', menuClose: 'Open navigation', title: 'Oleksandra Sherepera — Video Editor & Visual Creator'
+  }
+};
+
+let language = 'uk';
+let scrollRevealObserver = null;
+try { language = localStorage.getItem('oleksandra-portfolio-language') === 'en' ? 'en' : 'uk'; } catch { /* Storage is optional. */ }
+
+function renderInterests() {
+  document.querySelector('#interest-grid').innerHTML = content[language].interests.map(([icon, title, text, kind], index) => `
+    <article class="interest ${kind}"><span class="interest-index">0${index + 1}</span><span class="interest-icon" aria-hidden="true">${icon}</span><h3>${title}</h3><p>${text}</p></article>`).join('');
+}
+
+function projectArtwork(kind, title) {
+  if (kind === 'soft') return `<div class="soft-interface"><span>${language === 'uk' ? 'настрій сьогодні?' : 'mood, today?'}</span><div class="mood-orb"></div><i>soft / 01</i></div><span class="visual-caption">A GENTLER KIND OF INTERFACE</span>`;
+  if (kind === 'rhythm') return `<div class="rhythm-bars">${'<i></i>'.repeat(11)}</div><span class="rhythm-word">${language === 'uk' ? 'пауза' : 'pause'}<span> / </span>${language === 'uk' ? 'гра' : 'play'}</span>`;
+  return `<div class="room-window"><span class="window-dots">● &nbsp;● &nbsp;●</span><span class="room-line"></span><span class="room-blob"></span><span class="room-label">${language === 'uk' ? 'місце\nдля початку' : 'somewhere\nto begin'}</span></div><span class="room-orbit">IDEA<br>→ FORM</span>`;
+}
+
+function renderProjects() {
+  document.querySelector('#project-grid').innerHTML = content[language].projects.map(([number, category, title, text, kind]) => `
+    <article class="project-card project-${kind}"><div class="project-visual" role="img" aria-label="${title} concept artwork"><span class="project-number">${number} / 03</span>${projectArtwork(kind, title)}</div><div class="project-info"><div class="project-category">${category}</div><h3>${title}</h3><p>${text}</p></div></article>`).join('');
+}
+
+function setLanguage(nextLanguage) {
+  language = nextLanguage;
+  document.documentElement.lang = language;
+  document.title = content[language].title;
+  document.querySelectorAll('[data-uk][data-en]').forEach(element => {
+    element.innerHTML = element.dataset[language].replaceAll('\\n', '<br>');
+  });
+  document.querySelectorAll('[data-lang]').forEach(button => {
+    const active = button.dataset.lang === language;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+  document.querySelector('.menu-toggle').setAttribute('aria-label', document.querySelector('.menu-toggle').getAttribute('aria-expanded') === 'true' ? content[language].menuOpen : content[language].menuClose);
+  renderInterests();
+  renderProjects();
+  refreshScrollReveals();
+  try { localStorage.setItem('oleksandra-portfolio-language', language); } catch { /* The site works without storage. */ }
+}
+
+document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+document.querySelectorAll('.main-nav a').forEach(link => link.addEventListener('click', () => document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false')));
+document.querySelector('.menu-toggle').addEventListener('click', event => {
+  const button = event.currentTarget;
+  const expanded = button.getAttribute('aria-expanded') !== 'true';
+  button.setAttribute('aria-expanded', String(expanded));
+  button.setAttribute('aria-label', expanded ? content[language].menuOpen : content[language].menuClose);
+  document.querySelector('.main-nav').classList.toggle('is-open', expanded);
+});
+document.querySelector('#year').textContent = new Date().getFullYear();
+renderInterests();
+renderProjects();
+if (language !== 'uk') setLanguage(language);
+
+const heroSection = document.querySelector('.hero');
+const heroPortrait = document.querySelector('.hero-art img');
+if (heroSection && heroPortrait && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  heroSection.addEventListener('pointermove', event => {
+    const bounds = heroSection.getBoundingClientRect();
+    const horizontal = (event.clientX - bounds.left - bounds.width / 2) / (bounds.width / 2);
+    const vertical = (event.clientY - bounds.top - bounds.height / 2) / (bounds.height / 2);
+    heroPortrait.style.setProperty('--look-x', `${(horizontal * 8).toFixed(1)}px`);
+    heroPortrait.style.setProperty('--look-y', `${(vertical * 6).toFixed(1)}px`);
+    heroPortrait.style.setProperty('--look-rotate', `${(horizontal * 1.8).toFixed(2)}deg`);
+  });
+  heroSection.addEventListener('pointerleave', () => {
+    heroPortrait.style.setProperty('--look-x', '0px');
+    heroPortrait.style.setProperty('--look-y', '0px');
+    heroPortrait.style.setProperty('--look-rotate', '0deg');
+  });
+}
+
+function refreshScrollReveals() {
+  if (!scrollRevealObserver) return;
+  const targets = document.querySelectorAll('.about-layout, .world-heading-row, .interest, .work-heading-row, .project-card, .contact-copy, .contact-art');
+  targets.forEach((element, index) => {
+    if (element.classList.contains('scroll-reveal')) return;
+    element.classList.add('scroll-reveal');
+    element.style.setProperty('--reveal-delay', `${Math.min((index % 5) * 65, 260)}ms`);
+    scrollRevealObserver.observe(element);
+  });
+}
+
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('has-scroll-reveal');
+  scrollRevealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      scrollRevealObserver.unobserve(entry.target);
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -36px 0px' });
+  refreshScrollReveals();
+}
+
+let scrollFrame = 0;
+window.addEventListener('scroll', () => {
+  if (scrollFrame) return;
+  scrollFrame = requestAnimationFrame(() => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+    document.body.style.setProperty('--scroll-progress', String(Math.min(1, Math.max(0, progress))));
+    scrollFrame = 0;
+  });
+}, { passive: true });
+document.body.style.setProperty('--scroll-progress', '0');
+
+  </script>
+</body>
+</html>
