@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oleksandra-sherepera.itkamianets.com/sitemap.xml
